@@ -1,0 +1,9 @@
+C:\Users\user\Desktop\Develeoper Tools\TaskMvc.Tests\bin\Debug\net9.0\.msCoverageSourceRootsMapping_TaskMvc.Tests
+C:\Users\user\Desktop\Develeoper Tools\TaskMvc.Tests\bin\Debug\net9.0\CoverletSourceRootsMapping_TaskMvc.Tests
+C:\Users\user\Desktop\Develeoper Tools\TaskMvc.Tests\obj\Debug\net9.0\TaskMvc.Tests.csproj.AssemblyReference.cache
+C:\Users\user\Desktop\Develeoper Tools\TaskMvc.Tests\obj\Debug\net9.0\MvcTestingAppManifest.json
+C:\Users\user\Desktop\Develeoper Tools\TaskMvc.Tests\obj\Debug\net9.0\TaskMvc.Tests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Desktop\Develeoper Tools\TaskMvc.Tests\obj\Debug\net9.0\TaskMvc.Tests.AssemblyInfoInputs.cache
+C:\Users\user\Desktop\Develeoper Tools\TaskMvc.Tests\obj\Debug\net9.0\TaskMvc.Tests.AssemblyInfo.cs
+C:\Users\user\Desktop\Develeoper Tools\TaskMvc.Tests\obj\Debug\net9.0\TaskMvc.Tests.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\Develeoper Tools\TaskMvc.Tests\obj\Debug\net9.0\TaskMvc.Tests.sourcelink.json

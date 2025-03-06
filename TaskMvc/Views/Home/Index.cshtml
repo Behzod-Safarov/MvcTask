@@ -1,0 +1,96 @@
+﻿@model List<TaskMvc.Models.Employee>
+
+<h2>Employee Import</h2>
+
+@if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+    <div class="alert alert-info">@Html.Raw(ViewBag.Message)</div>
+}
+
+<form method="post" asp-action="ImportCSV" asp-controller="Home" enctype="multipart/form-data">
+    <input type="file" name="file" accept=".csv" required />
+    <button type="submit" class="btn btn-primary">Import</button>
+</form>
+
+<hr />
+
+<table id="employeesTable" class="table table-striped table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>Payroll Number</th>
+            <th>Forenames</th>
+            <th>Surname</th>
+            <th>Date of Birth</th>
+            <th>Telephone</th>
+            <th>Mobile</th>
+            <th>Address</th>
+            <th>Email Home</th>
+            <th>Start Date</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+</table>
+
+<!-- Modal Container -->
+<div id="editModalContainer"></div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            let table = $('#employeesTable').DataTable({
+                "ajax": "/Home/GetEmployees",
+                "columns": [
+                    { "data": "payrollNumber" },
+                    { "data": "forenames" },
+                    { "data": "surname" },
+                    { "data": "dateOfBirth", "render": function (data) { return new Date(data).toLocaleDateString(); } },
+                    { "data": "telephone" },
+                    { "data": "mobile" },
+                    { "data": "address" },
+                    { "data": "emailHome" },
+                    { "data": "startDate", "render": function (data) { return new Date(data).toLocaleDateString(); } },
+                    {
+                        "data": "payrollNumber",
+                        "render": function (data) {
+                            return `<a href="#" class="btn btn-warning btn-sm edit-btn" data-id="${data}">Edit</a>`;
+                        }
+                    }
+                ],
+                "order": [[2, "asc"]]
+            });
+
+            $('body').on('click', '.edit-btn', function (e) {
+                e.preventDefault();
+                var id = $(this).data('id');
+
+                $.get('/Home/Edit/' + id, function (data) {
+                    $('#editModalContainer').html(data);
+                    $('#editModal').modal('show');
+                });
+            });
+
+            $('body').on('submit', '#editForm', function (e) {
+                e.preventDefault();
+                var form = $(this);
+                var url = form.attr('action');
+                var data = form.serialize();
+
+                $.post(url, data, function (result) {
+                    if (result.success) {
+                        $('#editModal').modal('hide');
+                        table.ajax.reload();
+                    } else {
+                        alert("Error: " + result.message);
+                    }
+                }).fail(function (xhr) {
+                    alert("Request failed: " + xhr.responseText);
+                });
+            });
+        });
+    </script>
+}
