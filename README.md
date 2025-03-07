@@ -92,9 +92,6 @@ cd MvcTask.Tests
 - Adding **bulk edit** functionality.
 - Improving UI with a modern frontend framework (e.g., React or Blazor).
 
-## License
-This project is open-source under the **MIT License**.
-
 ---
 
 ### Author
