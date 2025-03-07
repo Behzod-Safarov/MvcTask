@@ -90,7 +90,6 @@ cd MvcTask.Tests
 ## Future Enhancements
 - Implementing **CSV validation** before import.
 - Adding **bulk edit** functionality.
-- Improving UI with a modern frontend framework (e.g., React or Blazor).
 
 ---
 
